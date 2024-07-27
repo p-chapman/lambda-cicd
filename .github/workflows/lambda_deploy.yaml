@@ -1,4 +1,3 @@
-
 name: Deploy AWS Lambda
 
 on:
@@ -6,12 +5,12 @@ on:
     branches:
       - main
     paths:
-      - 'lambda/'
+      - 'lambda/**'
 
 jobs:
   deploy-lambda:   # Name of job
     runs-on: ubuntu-latest  #Sets or specifies runner
-    steps:
+    steps:  
       - uses: actions/checkout@v2
 
       - name: Set Up Python   #Setsp our python environment
@@ -35,4 +34,4 @@ jobs:
         run: |
           cd lambda
           zip -r lambda.zip .
-          aws lambda update-function-coode --function-name my-test-cicd-lamba --zip-file fileb://lambda.zip 
+          aws lambda update-function-code --function-name my-test-cicd-lamba --zip-file fileb://lambda.zip 
